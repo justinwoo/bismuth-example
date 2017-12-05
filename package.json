@@ -1,0 +1,29 @@
+{
+  "name": "bismuth-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react-native": "^4.0.0",
+    "flow-bin": "^0.60.1",
+    "prettier": "^1.9.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "scripts": {
+    "build:webpack": "webpack --progress --colors",
+    "build:purs": "pulp build",
+    "build:ifyouwantedDCE": "pulp build --skip-entry-point -O -t output/Main.js",
+    "build:generate-types": "pulp run --main GenerateTypes",
+    "build": "npm run build:purs && npm run build:generate-types && npm run build:webpack",
+    "format": "prettier --write"
+  },
+  "author": "",
+  "license": "MIT"
+}

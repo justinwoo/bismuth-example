@@ -1,0 +1,14 @@
+{
+    "name": "bismuth-example",
+    "set": "paneer",
+    "source": "https://github.com/justinwoo/package-sets.git",
+    "depends": [
+        "prettier",
+        "node-fs-aff",
+        "bismuth",
+        "psci-support",
+        "console",
+        "eff",
+        "prelude"
+    ]
+}
