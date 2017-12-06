@@ -1,6 +1,6 @@
 {
     "name": "bismuth-example",
-    "set": "pate",
+    "set": "phad-thai",
     "source": "https://github.com/justinwoo/package-sets.git",
     "depends": [
         "prettier",

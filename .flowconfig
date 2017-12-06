@@ -4,6 +4,7 @@
 flow-src
 
 [libs]
+flow-lib
 
 [lints]
 
