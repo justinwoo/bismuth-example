@@ -4,15 +4,12 @@ const Main = require('../output/Main');
 import * as GeneratedTypes from './GeneratedTypes';
 
 const main: {
-  add2: GeneratedTypes.add2
+  add2: GeneratedTypes.add2,
+  log: GeneratedTypes.log
 } = Main
 
-declare module '../output/Main' {
-  declare var add2: GeneratedTypes.add2
-}
-
 const num = main.add2(12);
-console.log('number: ', num);
+main.log(num.toString())();
 
 // correctly errors:
 // main.add2('sdf');

@@ -21,7 +21,9 @@
     "build:purs": "pulp build",
     "build:ifyouwantedDCE": "pulp build --skip-entry-point -O -t output/Main.js",
     "build:generate-types": "pulp run --main GenerateTypes",
-    "build": "npm run build:purs && npm run build:generate-types && npm run build:webpack",
+    "build": "npm run build:purs && npm run build:generate-types && npm run build:webpack && npm run flow && npm run exec:output",
+    "exec:output": "node dist/index.js",
+    "flow": "killall flow; flow",
     "format": "prettier --write"
   },
   "author": "",
