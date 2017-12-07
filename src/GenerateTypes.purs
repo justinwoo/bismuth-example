@@ -2,12 +2,12 @@ module GenerateTypes where
 
 import Prelude
 
-import Bismuth (toFlowRep')
+import Bismuth (toFlowRep, toFlowRep')
 import Bismuth.LibDef (createModuleDefinition, declareFlowType)
 import Control.Monad.Aff (launchAff_)
 import Data.StrMap (fromFoldable)
 import Data.Tuple (Tuple(..))
-import Main (ValidationResult)
+import Main (ValidationResult, ValidationResultType)
 import Main as Main
 import Node.Encoding (Encoding(..))
 import Node.FS.Aff (writeTextFile)
@@ -20,7 +20,7 @@ main = launchAff_ do
     values = format defaultOptions $ "// @flow\n" <>
       createModuleDefinition
         "../output/Main"
-        [ declareFlowType "ValidationResult" (Proxy :: Proxy ValidationResult)
+        [ declareFlowType (toFlowRep (Proxy :: Proxy ValidationResult)) (Proxy :: Proxy ValidationResultType)
         ]
         (fromFoldable
           [ Tuple "add2" (toFlowRep' Main.add2)

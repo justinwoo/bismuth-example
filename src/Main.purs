@@ -41,17 +41,21 @@ endsWithPeriod s =
     Just _ -> pure unit
     Nothing -> invalid [MyError "didn't end with '.'"]
 
-type ValidationResult = Variant
+type ValidationResultType = Variant
   ( errors :: Array MyError
   , success :: String
   )
+
+newtype ValidationResult = ValidationResult ValidationResultType
+instance validationResultHasFlowRep :: HasFlowRep ValidationResult where
+  toFlowRep _ = "ValidationResult"
 
 validateInput :: String -> ValidationResult
 validateInput s =
   let
     result = s <$ startsWithI s <> containsDid s <> endsWithPeriod s
   in
-    unV
+    ValidationResult $ unV
       (inj (SProxy :: SProxy "errors"))
       (inj (SProxy :: SProxy "success"))
       result
