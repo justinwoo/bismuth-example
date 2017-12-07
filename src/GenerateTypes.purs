@@ -3,14 +3,16 @@ module GenerateTypes where
 import Prelude
 
 import Bismuth (toFlowRep')
-import Bismuth.LibDef (createModuleDefinition)
+import Bismuth.LibDef (createModuleDefinition, declareFlowType)
 import Control.Monad.Aff (launchAff_)
 import Data.StrMap (fromFoldable)
 import Data.Tuple (Tuple(..))
+import Main (ValidationResult)
 import Main as Main
 import Node.Encoding (Encoding(..))
 import Node.FS.Aff (writeTextFile)
 import Text.Prettier (defaultOptions, format)
+import Type.Prelude (Proxy(..))
 
 main = launchAff_ do
   writeTextFile UTF8 "./flow-lib/GeneratedDef.js" values
@@ -18,8 +20,10 @@ main = launchAff_ do
     values = format defaultOptions $ "// @flow\n" <>
       createModuleDefinition
         "../output/Main"
-        []
+        [ declareFlowType "ValidationResult" (Proxy :: Proxy ValidationResult)
+        ]
         (fromFoldable
           [ Tuple "add2" (toFlowRep' Main.add2)
           , Tuple "log" (toFlowRep' Main.log)
+          , Tuple "validateInput" (toFlowRep' Main.validateInput)
           ])

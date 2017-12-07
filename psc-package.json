@@ -3,6 +3,9 @@
     "set": "phad-thai",
     "source": "https://github.com/justinwoo/package-sets.git",
     "depends": [
+        "strings",
+        "validation",
+        "variant",
         "prettier",
         "node-fs-aff",
         "bismuth",
