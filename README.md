@@ -6,4 +6,6 @@ An example usage of [PureScript-Bismuth](https://github.com/justinwoo/purescript
 * Use [purs-loader](https://github.com/ethul/purs-loader)
 * or whatever
 
-This lazy setup will work with webpack watch and psc-ide will instantly rebuild you outputs and let webpack pick up the changes though, so you might find this lazy setup for dev / more optimized build for prod might be suitable for you. This is Webpack after all though, and sky's the limit on whatever the hell you choose to do.
+This setup uses Parcel to instantly rebuild on any changes in the Flow sources and the output directory, which will be rebuilt by psc-ide whenever you change files in PureScript using an editor plugin that uses psc-ide. On my machine, changes performed by psc-ide take 120ms to be rebuild by Parcel.
+
+See [this branch](https://github.com/justinwoo/bismuth-example/tree/webpack) for the webpack version.

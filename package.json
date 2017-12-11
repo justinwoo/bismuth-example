@@ -2,26 +2,26 @@
   "name": "bismuth-example",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-react-native": "^4.0.0",
     "flow-bin": "^0.60.1",
-    "prettier": "^1.9.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.5"
+    "parcel-bundler": "^1.1.0",
+    "prettier": "^1.9.0"
   },
   "scripts": {
-    "build:webpack": "webpack --progress --colors",
+    "build:parcel": "parcel build ./flow-src/index.js",
     "build:purs": "pulp build",
     "build:ifyouwantedDCE": "pulp build --skip-entry-point -O -t output/Main.js",
     "build:generate-types": "pulp run --main GenerateTypes",
-    "build": "npm run build:purs && npm run build:generate-types && npm run build:webpack && npm run flow && npm run exec:output",
+    "build": "npm run build:purs && npm run build:generate-types && npm run build:parcel && npm run flow && npm run exec:output",
     "exec:output": "node dist/index.js",
     "flow": "killall flow; flow",
     "format": "prettier --write"

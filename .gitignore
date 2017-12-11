@@ -9,3 +9,4 @@
 /.psa*
 /dist
 package-lock.json
+/.cache
